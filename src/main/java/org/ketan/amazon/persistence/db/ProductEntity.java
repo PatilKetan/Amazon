@@ -1,7 +1,9 @@
-package org.ketan.amazon.persistence.model;
+package org.ketan.amazon.persistence.db;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 public class ProductEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String name;
 	private Float price;
@@ -18,7 +21,7 @@ public class ProductEntity {
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "productEntity")
 	private OrderEntity orderEntity;
 
-	 public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -49,7 +52,5 @@ public class ProductEntity {
 	public void setOrderEntity(OrderEntity orderEntity) {
 		this.orderEntity = orderEntity;
 	}
-
-
 
 }
